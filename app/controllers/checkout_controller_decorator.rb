@@ -257,7 +257,7 @@ CheckoutController.class_eval do
              :custom            => order.number,
              :items             => items,
              :subtotal          => ((order.item_total * 100) + credits_total).to_i,
-             :tax               => ((order.adjustments.map { |a| a.amount if ( a.source_type == 'Order' && a.label == 'Tax') }.compact.sum) * 100 ).to_i,
+             :tax               => ((order.adjustments.map { |a| a.amount if ( a.source_type == 'Order' && a.label == I18n.t('tax')) }.compact.sum) * 100 ).to_i,
              :shipping          => ((order.adjustments.map { |a| a.amount if a.source_type == 'Shipment' }.compact.sum) * 100 ).to_i,
              :money             => (order.total * 100 ).to_i }
 
